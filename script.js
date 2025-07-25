@@ -18,6 +18,7 @@ menuBtns.forEach(btn => {
   btn.addEventListener('click', function(){
     popupTitle.textContent = this.textContent;
     popupVideo.currentTime = 0;
+    popupVideo.muted = false; // 팝업 영상 소리 켜기
     popupVideo.play();
     popup.classList.add('active');
   });
