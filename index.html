@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>안마침대 사용가이드</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <header>
+    <div class="title">안마침대 사용가이드</div>
+    <div class="datetime" id="datetime"></div>
+  </header>
+  <main>
+    <section class="video-section">
+      <video id="mainVideo" src="test.mp4" autoplay loop muted playsinline></video>
+    </section>
+    <section class="menu-section">
+      <button class="menu-btn" data-video="기본 사용법">기본 사용법</button>
+      <button class="menu-btn" data-video="부위별 사용법1">부위별 사용법1</button>
+      <button class="menu-btn" data-video="부위별 사용법2">부위별 사용법2</button>
+      <button class="menu-btn" data-video="부위별 사용법3">부위별 사용법3</button>
+    </section>
+  </main>
+
+  <!-- 팝업 영역 (처음엔 숨김) -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <div class="popup-header">
+        <span id="popup-title"></span>
+        <button class="close-btn" onclick="closePopup()">×</button>
+      </div>
+      <video id="popupVideo" src="test.mp4" controls autoplay muted></video>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
