@@ -13,12 +13,28 @@ main {
 }
 
 .video-section {
-  flex:3; display: flex; align-items: center; justify-content:center;
+  flex:3; display: flex; align-items: flex-end; justify-content:center;
   background:#fff; border-right:1px solid #e0e0e0; padding: 32px 12px 24px 32px;
+  min-width: 0;
+}
+.video-wrapper {
+  width: 100%;
+  height: 90%; /* 추가: 최대한 좌측하단 공간 활용 */
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  /* video 좌하단 정렬 */
 }
 .video-section video {
-  width: 100%; max-width: 720px; min-height: 340px; border-radius: 16px; background:#222;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 340px;
+  min-height: 260px;
+  border-radius: 16px; background:#222;
   box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+  object-fit: contain; /* 비율 유지하며 크기 최적화 */
 }
 
 .menu-section {
@@ -44,10 +60,14 @@ main {
 
 .popup-content {
   background:#fff; border-radius:18px; padding:16px 28px 24px 28px;
-  min-width:340px; box-shadow:0 8px 40px rgba(0,0,0,0.16);
+  /* 폭: 전체의 80%, 높이:auto (반응형), 최대 90vh */
+  width: 80vw;
+  max-width: 1280px;
+  height: auto;
+  max-height: 90vh;
+  box-shadow:0 8px 40px rgba(0,0,0,0.16);
   display:flex; flex-direction:column; align-items:center; max-width:98vw;
 }
-
 .popup-header {
   width:100%; display:flex; justify-content:space-between; align-items:center;
   font-size:1.1rem; font-weight:bold; margin-bottom:14px;
@@ -55,16 +75,25 @@ main {
 .close-btn {
   background:none; border:none; color:#444; font-size:2rem;
   cursor:pointer; margin-left:18px; padding:0; font-weight:bold; }
-.popup video { width:100%; height:240px; border-radius:9px; background:#111; }
+.popup video {
+  width: 100%;
+  height: 60vh; /* 화면의 60% 높이, 필요시 70vh도 가능 */
+  max-height: 64vh;
+  border-radius:9px; background:#111;
+  object-fit: contain;
+}
 
 @media (max-width: 900px) {
   header { font-size: 1.08rem; padding: 0 8px; }
   main { flex-direction: column-reverse; }
   .menu-section { flex-direction: row; width:100%; padding:14px 8px; justify-content:center;}
   .video-section { padding:18px 4vw 18px 3vw;}
+  .popup-content { width:95vw; min-width:0; padding:8px 6px 12px 8px; }
+  .popup video { height: 40vw; min-height: 160px; }
 }
 
 @media (max-width: 700px) {
-  .popup-content { min-width:90vw; padding:10px 6px 18px 9px; }
+  .popup-content { width:98vw; min-width:0; padding:8px 4px 10px 6px; }
   .popup-header { font-size:1rem; }
+  .popup video { width:100%; height:28vw; min-height:120px; }
 }
