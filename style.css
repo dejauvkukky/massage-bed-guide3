@@ -15,19 +15,18 @@ main {
 .video-section {
   flex:3;
   display: flex;
-  align-items: center;           /* 수직 중앙정렬로 변경 */
-  justify-content: center;       /* 수평 중앙정렬 */
+  align-items: center;
+  justify-content: center;
   background:#fff;
   border-right:1px solid #e0e0e0;
-  padding: 0 12px 0 32px;        /* 상하 padding=0 */
+  padding: 0 12px 0 32px;
   min-width: 0;
 }
-
 .video-wrapper {
   width: 100%;
   height: 90%;
   display: flex;
-  align-items: center;           /* 수직 중앙 */
+  align-items: center;
   justify-content: flex-start;
 }
 .video-section video {
@@ -39,7 +38,7 @@ main {
   min-height: 260px;
   border-radius: 16px; background:#222;
   box-shadow: 0 8px 32px rgba(0,0,0,0.14);
-  object-fit: contain; /* 비율 유지하며 크기 최적화 */
+  object-fit: contain;
 }
 
 .menu-section {
@@ -47,7 +46,6 @@ main {
   align-items: flex-start; background: #fcfcfc; min-width: 180px;
   padding: 40px 24px; gap:18px;
 }
-
 .menu-btn {
   width:100%; min-height:56px; margin-bottom: 6px;
   background:#fff; border:2px solid #009688; color:#009688; border-radius:12px;
@@ -89,9 +87,38 @@ main {
 
 @media (max-width: 900px) {
   header { font-size: 1.08rem; padding: 0 8px; }
-  main { flex-direction: column-reverse; }
-  .menu-section { flex-direction: row; width:100%; padding:14px 8px; justify-content:center;}
-  .video-section { padding:0 4vw 0 3vw;}
+  main {
+    flex-direction: column;         /* ← 세로(모바일)에서는 상하 분할 */
+    height: auto;
+    min-height: 100vh;
+  }
+  .video-section {
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+    padding: 0 4vw;
+    min-height: 220px;
+    align-items: center;
+    justify-content: center;
+  }
+  .video-wrapper {
+    height: inherit;
+    justify-content: center;
+  }
+  .menu-section {
+    flex-direction: row;            /* 메뉴를 가로로 */
+    width:100%; min-width:0;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 2vw 24px 2vw;
+    gap: 12px;
+    background: #fcfcfc;
+  }
+  .menu-btn {
+    width: auto;                /* 버튼 최소폭 유지, 버튼끼리 여백 */
+    min-width: 110px;
+    margin-bottom: 0;
+  }
   .popup-content { width:95vw; min-width:0; padding:8px 6px 12px 8px; }
   .popup video { height: 40vw; min-height: 160px; }
 }
