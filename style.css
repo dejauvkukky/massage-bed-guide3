@@ -13,17 +13,22 @@ main {
 }
 
 .video-section {
-  flex:3; display: flex; align-items: flex-end; justify-content:center;
-  background:#fff; border-right:1px solid #e0e0e0; padding: 32px 12px 24px 32px;
+  flex:3;
+  display: flex;
+  align-items: center;           /* 수직 중앙정렬로 변경 */
+  justify-content: center;       /* 수평 중앙정렬 */
+  background:#fff;
+  border-right:1px solid #e0e0e0;
+  padding: 0 12px 0 32px;        /* 상하 padding=0 */
   min-width: 0;
 }
+
 .video-wrapper {
   width: 100%;
-  height: 90%; /* 추가: 최대한 좌측하단 공간 활용 */
+  height: 90%;
   display: flex;
-  align-items: flex-end;
+  align-items: center;           /* 수직 중앙 */
   justify-content: flex-start;
-  /* video 좌하단 정렬 */
 }
 .video-section video {
   width: 100%;
@@ -60,7 +65,6 @@ main {
 
 .popup-content {
   background:#fff; border-radius:18px; padding:16px 28px 24px 28px;
-  /* 폭: 전체의 80%, 높이:auto (반응형), 최대 90vh */
   width: 80vw;
   max-width: 1280px;
   height: auto;
@@ -77,7 +81,7 @@ main {
   cursor:pointer; margin-left:18px; padding:0; font-weight:bold; }
 .popup video {
   width: 100%;
-  height: 60vh; /* 화면의 60% 높이, 필요시 70vh도 가능 */
+  height: 60vh;
   max-height: 64vh;
   border-radius:9px; background:#111;
   object-fit: contain;
@@ -87,11 +91,10 @@ main {
   header { font-size: 1.08rem; padding: 0 8px; }
   main { flex-direction: column-reverse; }
   .menu-section { flex-direction: row; width:100%; padding:14px 8px; justify-content:center;}
-  .video-section { padding:18px 4vw 18px 3vw;}
+  .video-section { padding:0 4vw 0 3vw;}
   .popup-content { width:95vw; min-width:0; padding:8px 6px 12px 8px; }
   .popup video { height: 40vw; min-height: 160px; }
 }
-
 @media (max-width: 700px) {
   .popup-content { width:98vw; min-width:0; padding:8px 4px 10px 6px; }
   .popup-header { font-size:1rem; }
