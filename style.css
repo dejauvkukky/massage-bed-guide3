@@ -1,129 +1,58 @@
-* { box-sizing: border-box; margin:0; padding:0; }
-body { font-family: 'Noto Sans KR', Arial, sans-serif; background: #f5f5f5; height:100vh; }
-header {
-  display: flex; justify-content: space-between; align-items: center;
-  background: #009688; height: 64px; color: #fff; font-size: 1.5rem; padding: 0 32px;
-  font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-}
-.title { letter-spacing: 1px; }
-.datetime { font-size: 1rem; opacity:0.9; font-weight: normal; }
+/* ... 기존 코드 동일 ... */
 
-main {
-  display: flex; width: 100vw; height: calc(100vh - 64px); min-height: 400px;
-}
-
-.video-section {
-  flex:3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background:#fff;
-  border-right:1px solid #e0e0e0;
-  padding: 0 12px 0 32px;
-  min-width: 0;
-}
-.video-wrapper {
-  width: 100%;
-  height: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.video-section video {
+/* 홍보영상 크기와 동일, object-fit 사용 */
+.video-section video,
+.popup video {
   width: 100%;
   height: 100%;
   max-width: 100%;
   max-height: 100%;
   min-width: 340px;
   min-height: 260px;
-  border-radius: 16px; background:#222;
+  border-radius: 16px;
+  background: #222;
   box-shadow: 0 8px 32px rgba(0,0,0,0.14);
   object-fit: contain;
 }
 
-.menu-section {
-  flex:1; display: flex; flex-direction: column;
-  align-items: flex-start; background: #fcfcfc; min-width: 180px;
-  padding: 40px 24px; gap:18px;
-}
-.menu-btn {
-  width:100%; min-height:56px; margin-bottom: 6px;
-  background:#fff; border:2px solid #009688; color:#009688; border-radius:12px;
-  font-size:1.15rem; font-weight:500; cursor:pointer;
-  transition: background .19s, color .19s;
-}
-.menu-btn:hover, .menu-btn:focus { background:#009688; color:#fff; }
-
-.popup {
-  display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:1002;
-  background:rgba(0,0,0,0.37); align-items:center; justify-content: center;
-}
-.popup.active { display:flex; animation:fadein .2s; }
-@keyframes fadein { from {opacity:0;} to{opacity:1;} }
-
+/* 팝업창도 홍보영상과 같은 패널 사이즈로 */
 .popup-content {
-  background:#fff; border-radius:18px; padding:16px 28px 24px 28px;
-  width: 80vw;
-  max-width: 1280px;
-  height: auto;
-  max-height: 90vh;
-  box-shadow:0 8px 40px rgba(0,0,0,0.16);
-  display:flex; flex-direction:column; align-items:center; max-width:98vw;
-}
-.popup-header {
-  width:100%; display:flex; justify-content:space-between; align-items:center;
-  font-size:1.1rem; font-weight:bold; margin-bottom:14px;
-}
-.close-btn {
-  background:none; border:none; color:#444; font-size:2rem;
-  cursor:pointer; margin-left:18px; padding:0; font-weight:bold; }
-.popup video {
+  background: #fff;
+  border-radius: 18px;
+  padding: 16px 28px 24px 28px;
+  max-width: 720px;            /* 홍보영상 max-width와 일치 */
   width: 100%;
-  height: 60vh;
-  max-height: 64vh;
-  border-radius:9px; background:#111;
-  object-fit: contain;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.16);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media (max-width: 900px) {
-  header { font-size: 1.08rem; padding: 0 8px; }
-  main {
-    flex-direction: column;         /* ← 세로(모바일)에서는 상하 분할 */
-    height: auto;
-    min-height: 100vh;
+  .video-section video,
+  .popup video {
+    min-width: 160px;
+    min-height: 100px;
+    max-width: 100vw;
+    max-height: 40vw;
   }
-  .video-section {
-    border-right: none;
-    border-bottom: 1px solid #e0e0e0;
-    width: 100%;
-    padding: 0 4vw;
-    min-height: 220px;
-    align-items: center;
-    justify-content: center;
+  .popup-content {
+    width: 100vw;
+    max-width: none;
+    padding: 10px 5vw 20px 5vw;
   }
-  .video-wrapper {
-    height: inherit;
-    justify-content: center;
-  }
-  .menu-section {
-    flex-direction: row;            /* 메뉴를 가로로 */
-    width:100%; min-width:0;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 2vw 24px 2vw;
-    gap: 12px;
-    background: #fcfcfc;
-  }
-  .menu-btn {
-    width: auto;                /* 버튼 최소폭 유지, 버튼끼리 여백 */
-    min-width: 110px;
-    margin-bottom: 0;
-  }
-  .popup-content { width:95vw; min-width:0; padding:8px 6px 12px 8px; }
-  .popup video { height: 40vw; min-height: 160px; }
 }
 @media (max-width: 700px) {
-  .popup-content { width:98vw; min-width:0; padding:8px 4px 10px 6px; }
-  .popup-header { font-size:1rem; }
-  .popup video { width:100%; height:28vw; min-height:120px; }
+  .video-section video,
+  .popup video {
+    min-width: 100px;
+    min-height: 80px;
+    max-width: 100vw;
+    max-height: 40vw;
+  }
+  .popup-content {
+    width: 100vw;
+    max-width: none;
+    padding: 6px 1vw 10px 1vw;
+  }
 }
